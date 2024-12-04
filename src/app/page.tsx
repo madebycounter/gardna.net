@@ -1,6 +1,21 @@
+import { StaticImageData } from "next/image";
+import Lightbox, { ContainerRect, Slide } from "yet-another-react-lightbox";
+
 import Gallery from "@/components/Gallery";
 
 import bandPhotos from "@/include/bandPhotos";
+
+function ImageSlide({
+    slide,
+    offset,
+    rect,
+}: {
+    slide: Slide;
+    offset: number;
+    rect: ContainerRect;
+}) {
+    return <h1>Hi</h1>;
+}
 
 export default async function Home() {
     return (
@@ -39,6 +54,12 @@ export default async function Home() {
             </p>
 
             <Gallery images={bandPhotos} columns={2} />
+
+            <Lightbox
+                open={true}
+                slides={bandPhotos}
+                render={{ slide: ImageSlide }}
+            />
         </main>
     );
 }
