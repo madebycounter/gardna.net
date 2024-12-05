@@ -65,9 +65,14 @@ function createLayout<T>(
 export interface GalleryProps {
     images: SanityImage[];
     columns?: number;
+    onClick?: (id: string) => void;
 }
 
-export default function Gallery({ images, columns = 2 }: GalleryProps) {
+export default function Gallery({
+    images,
+    columns = 2,
+    onClick,
+}: GalleryProps) {
     var layout = createLayout(images, columns, (item) => {
         const { width, height } = getImageDimensions(item);
         return width / height;
@@ -84,6 +89,7 @@ export default function Gallery({ images, columns = 2 }: GalleryProps) {
                             key={j}
                             width={600}
                             queryParams={{ q: 50 }}
+                            onClick={onClick}
                         />
                     ))}
                 </div>

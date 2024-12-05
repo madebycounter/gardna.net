@@ -1,14 +1,9 @@
-import { PortableText } from "next-sanity";
-import Link from "next/link";
+import Content from "@/site/Content";
 
-import Gallery from "@/lib/components/Gallery";
-import Image from "@/lib/components/Image";
 import { usePage } from "@/lib/queries";
 
 export default async function Home() {
     const pageData = await usePage();
-
-    console.log(pageData);
 
     return (
         <main className="mx-auto max-w-screen-md p-4">
@@ -34,37 +29,7 @@ export default async function Home() {
 
             <hr />
 
-            <PortableText
-                value={pageData.content}
-                components={{
-                    block: {
-                        normal: (props: any) => <p>{props.children}</p>,
-                        h1: (props: any) => <h1>{props.children}</h1>,
-                        h2: (props: any) => <h2>{props.children}</h2>,
-                        h3: (props: any) => <h3>{props.children}</h3>,
-                    },
-                    marks: {
-                        strong: (props: any) => (
-                            <strong>{props.children}</strong>
-                        ),
-                        link: (props: any) => (
-                            <Link href={props.value.href}>{props.text}</Link>
-                        ),
-                    },
-                    types: {
-                        gallery: (props: any) => (
-                            <Gallery images={props.value.images} columns={2} />
-                        ),
-                        "image.default": (props: any) => (
-                            <Image
-                                src={props.value}
-                                className="my-4"
-                                width={800}
-                            />
-                        ),
-                    },
-                }}
-            />
+            <Content data={pageData.content} />
         </main>
     );
 }
