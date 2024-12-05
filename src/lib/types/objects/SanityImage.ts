@@ -8,6 +8,13 @@ export const sanityImageSchema = defineType({
     options: {
         hotspot: true,
     },
+    fields: [
+        {
+            type: "string",
+            name: "caption",
+            title: "Caption",
+        },
+    ],
     icon: ImageIcon,
     preview: {
         select: {

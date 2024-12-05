@@ -31,7 +31,6 @@ export default function Action({
             aria-label={label}
             disabled={disabled}
         >
-            <button></button>
             {children}
         </Action>
     );

@@ -1,0 +1,36 @@
+.Viewer {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+
+    pointer-events: none;
+    opacity: 0;
+
+    position: fixed;
+    overflow: hidden;
+
+    transition: opacity 100ms ease-in-out;
+    background-color: black;
+}
+
+.Viewer__open {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.ViewerClose {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    z-index: 50;
+}
+
+.ViewerClose > svg {
+    fill: #f9f9f9;
+    width: 2rem;
+    height: 2rem;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.75))
+        drop-shadow(0 0 10px rgba(0, 0, 0, 0.75));
+}

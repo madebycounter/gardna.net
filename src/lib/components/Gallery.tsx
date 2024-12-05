@@ -1,7 +1,7 @@
 import { getImageDimensions } from "@sanity/asset-utils";
 
-import { SanityImage } from "../types";
-import Image from "./Image";
+import Image, { ImageProps } from "@/lib/components/Image";
+import { SanityImage } from "@/lib/types";
 
 type GalleryLayout<T> = {
     items: T[];
@@ -62,17 +62,14 @@ function createLayout<T>(
     return layout.map((group) => group.items);
 }
 
-export interface GalleryProps {
+export interface GalleryProps extends Omit<ImageProps, "src" | "className"> {
     images: SanityImage[];
     columns?: number;
-    onClick?: (id: string) => void;
 }
 
-export default function Gallery({
-    images,
-    columns = 2,
-    onClick,
-}: GalleryProps) {
+export default function Gallery(props: GalleryProps) {
+    const { images, columns = 2, ...rest } = props;
+
     var layout = createLayout(images, columns, (item) => {
         const { width, height } = getImageDimensions(item);
         return width / height;
@@ -87,9 +84,7 @@ export default function Gallery({
                             className="flex-auto object-cover"
                             src={photo}
                             key={j}
-                            width={600}
-                            queryParams={{ q: 50 }}
-                            onClick={onClick}
+                            {...rest}
                         />
                     ))}
                 </div>

@@ -5,7 +5,6 @@ import Link from "next/link";
 
 import Gallery from "@/lib/components/Gallery";
 import Image from "@/lib/components/Image";
-import Lightbox, { useLightboxState } from "@/lib/components/Lightbox";
 import { RichText } from "@/lib/types";
 
 export interface ContentProps {
@@ -13,28 +12,21 @@ export interface ContentProps {
 }
 
 export default function Content({ data }: ContentProps) {
-    const [lightboxOpen, lightboxCurrent, setLightbox] = useLightboxState();
+    // const [lightboxOpen, lightboxCurrent, setLightbox] = useLightboxState();
 
-    const slides = [
-        ...data.filter((block: any) => block._type === "image.default"),
-        ...data
-            .filter((block: any) => block._type === "gallery")
-            .flatMap((block: any) => block.images),
-    ].filter((a, i, r) => r.findIndex((b) => b.id === a.id) === i);
+    // const slides = [
+    //     ...data.filter((block: any) => block._type === "image.default"),
+    //     ...data
+    //         .filter((block: any) => block._type === "gallery")
+    //         .flatMap((block: any) => block.images),
+    // ].filter((a, i, r) => r.findIndex((b) => b.id === a.id) === i);
 
-    const onImageClick = (id: string) => {
-        setLightbox(true, id);
-    };
+    // const onImageClick = (id: string) => {
+    //     setLightbox(true, id);
+    // };
 
     return (
         <>
-            <Lightbox
-                slides={slides}
-                open={lightboxOpen}
-                currentSlide={lightboxCurrent}
-                setLightbox={setLightbox}
-            />
-
             <PortableText
                 value={data}
                 components={{
@@ -58,7 +50,9 @@ export default function Content({ data }: ContentProps) {
                                 <Gallery
                                     images={props.value.images}
                                     columns={2}
-                                    onClick={onImageClick}
+                                    width={600}
+                                    queryParams={{ q: 50 }}
+                                    viewer
                                 />
                             </>
                         ),
@@ -67,7 +61,7 @@ export default function Content({ data }: ContentProps) {
                                 src={props.value}
                                 className="my-4"
                                 width={800}
-                                onClick={onImageClick}
+                                viewer
                             />
                         ),
                     },
