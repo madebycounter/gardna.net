@@ -1,0 +1,17 @@
+.GoogleMaps {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.GoogleMaps > div {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.GoogleMaps > div > iframe {
+    width: 100%;
+
+    /* Fix for the iframe not taking up the full height */
+    height: calc(100% + 1px);
+}

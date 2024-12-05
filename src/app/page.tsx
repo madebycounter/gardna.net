@@ -1,28 +1,22 @@
-import { StaticImageData } from "next/image";
-import Lightbox, { ContainerRect, Slide } from "yet-another-react-lightbox";
+import { PortableText } from "next-sanity";
+import Link from "next/link";
 
-import Gallery from "@/components/Gallery";
-
-import bandPhotos from "@/include/bandPhotos";
-
-function ImageSlide({
-    slide,
-    offset,
-    rect,
-}: {
-    slide: Slide;
-    offset: number;
-    rect: ContainerRect;
-}) {
-    return <h1>Hi</h1>;
-}
+import Gallery from "@/lib/components/Gallery";
+import Image from "@/lib/components/Image";
+import { usePage } from "@/lib/queries";
 
 export default async function Home() {
+    const pageData = await usePage();
+
+    console.log(pageData);
+
     return (
         <main className="mx-auto max-w-screen-md p-4">
             <div className="flex justify-between">
                 <div>
-                    <h1>William Gardner</h1>
+                    <span className="my-4 text-4xl font-bold tracking-tight">
+                        William Gardner
+                    </span>
 
                     <div className="my-4 flex gap-4">
                         <a href="/about">About</a>
@@ -40,25 +34,36 @@ export default async function Home() {
 
             <hr />
 
-            <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of
-                Lorem Ipsum.
-            </p>
-
-            <Gallery images={bandPhotos} columns={2} />
-
-            <Lightbox
-                open={true}
-                slides={bandPhotos}
-                render={{ slide: ImageSlide }}
+            <PortableText
+                value={pageData.content}
+                components={{
+                    block: {
+                        normal: (props: any) => <p>{props.children}</p>,
+                        h1: (props: any) => <h1>{props.children}</h1>,
+                        h2: (props: any) => <h2>{props.children}</h2>,
+                        h3: (props: any) => <h3>{props.children}</h3>,
+                    },
+                    marks: {
+                        strong: (props: any) => (
+                            <strong>{props.children}</strong>
+                        ),
+                        link: (props: any) => (
+                            <Link href={props.value.href}>{props.text}</Link>
+                        ),
+                    },
+                    types: {
+                        gallery: (props: any) => (
+                            <Gallery images={props.value.images} columns={2} />
+                        ),
+                        "image.default": (props: any) => (
+                            <Image
+                                src={props.value}
+                                className="my-4"
+                                width={800}
+                            />
+                        ),
+                    },
+                }}
             />
         </main>
     );

@@ -32,4 +32,28 @@
     hr {
         @apply my-4 border-t border-stone-300;
     }
+
+    ul {
+        @apply ml-[2em] list-decimal;
+    }
+
+    ul ul {
+        @apply list-[lower-alpha];
+    }
+
+    ul ul ul {
+        @apply list-[lower-roman];
+    }
+
+    ol {
+        @apply ml-[2em] list-disc;
+    }
+
+    ol ol {
+        @apply list-[circle];
+    }
+
+    ol ol ol {
+        @apply list-[square];
+    }
 }
