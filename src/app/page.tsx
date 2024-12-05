@@ -2,6 +2,8 @@ import Content from "@/site/Content";
 
 import { usePage } from "@/lib/queries";
 
+import "./globals.css";
+
 export default async function Home() {
     const pageData = await usePage();
 

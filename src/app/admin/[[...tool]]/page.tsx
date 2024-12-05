@@ -1,4 +1,5 @@
 import Studio from "./Studio";
+import "./sanity.css";
 
 export const dynamic = "force-static";
 

@@ -3,15 +3,14 @@ import { defineConfig } from "sanity";
 import { muxInput } from "sanity-plugin-mux-input";
 import { structureTool } from "sanity/structure";
 
-import "@/lib/sanity/removeAllFields.css";
 import {
     configSchema,
     pageSchema,
     richTextSchema,
     sanityImageSchema,
     socialLinkSchema,
+    gallerySchema,
 } from "@/lib/types";
-import { gallerySchema } from "@/lib/types/objects/Gallery";
 
 export default defineConfig({
     basePath: "/admin",
