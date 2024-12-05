@@ -14,7 +14,7 @@ import {
 import { gallerySchema } from "@/lib/types/objects/Gallery";
 
 export default defineConfig({
-    basePath: "/studio",
+    basePath: "/admin",
     projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "",
     dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
 

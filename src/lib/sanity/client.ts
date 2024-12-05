@@ -8,6 +8,6 @@ export const client = createClient({
     perspective: "published",
     stega: {
         enabled: false,
-        studioUrl: "/studio",
+        studioUrl: "/admin",
     },
 });
