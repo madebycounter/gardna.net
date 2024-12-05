@@ -26,8 +26,7 @@
         "sanity": "^3.65.1",
         "sanity-image": "^0.2.0",
         "sanity-plugin-mux-input": "^2.4.0",
-        "styled-components": "^6.1.13",
-        "yet-another-react-lightbox": "^3.21.7"
+        "styled-components": "^6.1.13"
     },
     "devDependencies": {
         "@trivago/prettier-plugin-sort-imports": "^4.3.0",
