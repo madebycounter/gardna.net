@@ -15,6 +15,11 @@ export default async function Home() {
                         William Gardner
                     </span>
 
+                    <div className="my-2 block sm:hidden">
+                        <p className="my-0">william@madebycounter.com</p>
+                        <p className="my-0">San Jose, CA</p>
+                    </div>
+
                     <div className="my-4 flex gap-4">
                         <a href="/about">About</a>
                         <a href="/about">Photography</a>
@@ -23,7 +28,7 @@ export default async function Home() {
                     </div>
                 </div>
 
-                <div className="my-4 text-right">
+                <div className="my-4 hidden text-right sm:block">
                     <p className="my-0">william@madebycounter.com</p>
                     <p className="my-0">San Jose, CA</p>
                 </div>
