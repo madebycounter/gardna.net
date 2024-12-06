@@ -2,13 +2,24 @@
 
 import { PortableText } from "next-sanity";
 import Link from "next/link";
+import { ReactNode, useEffect, useState } from "react";
 
+import Embed from "@/lib/components/Embed";
 import Gallery from "@/lib/components/Gallery";
 import Image from "@/lib/components/Image";
-import { RichText } from "@/lib/types";
+import {
+    Embed as EmbedData,
+    Gallery as GalleryData,
+    RichText,
+    SanityImage,
+} from "@/lib/types";
 
 export interface ContentProps {
     data: RichText;
+}
+
+export interface ComponentProps<T> {
+    value: T;
 }
 
 export default function Content({ data }: ContentProps) {
@@ -45,7 +56,7 @@ export default function Content({ data }: ContentProps) {
                         ),
                     },
                     types: {
-                        gallery: (props: any) => (
+                        gallery: (props: ComponentProps<GalleryData>) => (
                             <>
                                 <Gallery
                                     images={props.value.images}
@@ -56,12 +67,21 @@ export default function Content({ data }: ContentProps) {
                                 />
                             </>
                         ),
-                        image: (props: any) => (
+                        image: (props: ComponentProps<SanityImage>) => (
                             <Image
                                 src={props.value}
                                 className="my-4"
                                 width={800}
                                 viewer
+                            />
+                        ),
+                        embed: (props: ComponentProps<EmbedData>) => (
+                            <Embed
+                                url={
+                                    (props.value.embedType == "url"
+                                        ? props.value.url
+                                        : props.value.file?.url) || ""
+                                }
                             />
                         ),
                     },

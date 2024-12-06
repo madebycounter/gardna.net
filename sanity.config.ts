@@ -12,6 +12,7 @@ import {
     gallerySchema,
     externalLinkSchema,
     pageLinkSchema,
+    embedSchema,
 } from "@/lib/types";
 
 export default defineConfig({
@@ -21,6 +22,7 @@ export default defineConfig({
 
     schema: {
         types: [
+            embedSchema,
             gallerySchema,
             pageLinkSchema,
             externalLinkSchema,

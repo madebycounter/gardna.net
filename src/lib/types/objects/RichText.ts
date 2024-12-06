@@ -1,5 +1,6 @@
 import { defineType } from "sanity";
 
+import { embedFragment } from "@/lib/types/objects/Embed";
 import { galleryFragment } from "@/lib/types/objects/Gallery";
 import { sanityImageFragment } from "@/lib/types/objects/SanityImage";
 
@@ -29,6 +30,9 @@ export const richTextSchema = defineType({
         {
             type: "gallery",
         },
+        {
+            type: "embed",
+        },
     ],
 });
 
@@ -43,6 +47,9 @@ export const richTextFragment = `
     _type == "gallery" => {
         ${galleryFragment}
     },
+    _type == "embed" => {
+        ${embedFragment}
+    }
 `;
 
 export type RichText = { _type: "richText" } & any;
