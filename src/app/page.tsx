@@ -3,16 +3,13 @@ import { notFound } from "next/navigation";
 
 import SitePage from "@/site/SitePage";
 
-import { useHomePage } from "@/lib/queries";
+import { useConfig, useHomePage } from "@/lib/queries";
 
-export async function generateMetadata({
-    params,
-}: {
-    params: { slug: string };
-}): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
     const pageData = await useHomePage();
+    const config = await useConfig();
 
-    const title = "William Gardner | " + pageData.title;
+    const title = config.siteTitle + " | " + pageData.title;
     const description = pageData.description;
     const image = pageData.image;
 
@@ -37,10 +34,11 @@ export async function generateMetadata({
 
 export default async function HomePage() {
     const pageData = await useHomePage();
+    const config = await useConfig();
 
     if (!pageData) {
         return notFound();
     }
 
-    return <SitePage pageData={pageData} />;
+    return <SitePage pageData={pageData} config={config} />;
 }

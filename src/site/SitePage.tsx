@@ -4,7 +4,7 @@ import Content from "@/site/Content";
 
 import Action from "@/lib/components/Action";
 import { useConfig } from "@/lib/queries";
-import { Page } from "@/lib/types";
+import { Config, Page } from "@/lib/types";
 
 import CounterLogo from "@/counter.png";
 
@@ -12,18 +12,17 @@ import "./SitePage.css";
 
 export interface SitePageProps {
     pageData: Page;
+    config: Config;
 }
 
-export default async function SitePage({ pageData }: SitePageProps) {
-    const config = await useConfig();
-
+export default function SitePage({ pageData, config }: SitePageProps) {
     return (
         <div className="mx-auto flex min-h-screen max-w-screen-md flex-col p-4">
             <header className="flex-grow-0">
                 <div className="flex justify-between">
                     <div>
                         <span className="my-4 text-4xl font-bold tracking-tight">
-                            William Gardner
+                            {config.siteTitle}
                         </span>
 
                         <div className="my-2 block sm:hidden">
@@ -85,10 +84,7 @@ export default async function SitePage({ pageData }: SitePageProps) {
                 </div>
 
                 <p className="my-0 text-center text-sm text-black opacity-95">
-                    Last updated 2024
-                </p>
-                <p className="my-0 text-center text-sm text-black opacity-95">
-                    © 2024 William Gardner. All rights reserved.
+                    © 2024 {config.siteTitle}. All rights reserved.
                 </p>
             </footer>
         </div>
