@@ -6,13 +6,13 @@ import SitePage from "@/site/SitePage";
 import { useConfig, usePage } from "@/lib/queries";
 
 interface Params {
-    params: {
+    params: Promise<{
         slug: string;
-    };
+    }>;
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
-    const pageData = await usePage(params.slug);
+    const pageData = await usePage((await params).slug);
     const config = await useConfig();
 
     const title = config.siteTitle + " | " + pageData.title;
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 }
 
 export default async function HomePage({ params }: Params) {
-    const pageData = await usePage(params.slug);
+    const pageData = await usePage((await params).slug);
     const config = await useConfig();
 
     if (!pageData) {
