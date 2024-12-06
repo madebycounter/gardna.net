@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import Content from "@/site/Content";
 
@@ -32,13 +33,13 @@ export default function SitePage({ pageData, config }: SitePageProps) {
 
                         <div className="my-4 flex gap-4">
                             {config.navLinks.map((link, i) => (
-                                <Action
+                                <Link
                                     key={i}
                                     href={
                                         link._type === "pageLink"
                                             ? link.homepage
                                                 ? "/"
-                                                : link.page.slug.current
+                                                : "/" + link.page.slug.current
                                             : link.url
                                     }
                                     target={
@@ -48,7 +49,7 @@ export default function SitePage({ pageData, config }: SitePageProps) {
                                     }
                                 >
                                     {link.label}
-                                </Action>
+                                </Link>
                             ))}
                         </div>
                     </div>
