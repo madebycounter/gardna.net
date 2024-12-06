@@ -10,6 +10,8 @@ import {
     sanityImageSchema,
     socialLinkSchema,
     gallerySchema,
+    externalLinkSchema,
+    pageLinkSchema,
 } from "@/lib/types";
 
 export default defineConfig({
@@ -20,6 +22,8 @@ export default defineConfig({
     schema: {
         types: [
             gallerySchema,
+            pageLinkSchema,
+            externalLinkSchema,
             richTextSchema,
             sanityImageSchema,
             socialLinkSchema,

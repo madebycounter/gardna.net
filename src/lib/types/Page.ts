@@ -33,6 +33,23 @@ export const pageSchema = defineType({
             type: "richText",
             group: "content",
         },
+        {
+            name: "slug",
+            title: "Slug",
+            type: "slug",
+            group: "settings",
+            readOnly: ({ document }: any) => document.homepage,
+            options: {
+                source: "title",
+            },
+        },
+        {
+            name: "homepage",
+            title: "Is Homepage?",
+            type: "boolean",
+            group: "settings",
+            initialValue: false,
+        },
     ],
 });
 
@@ -41,10 +58,18 @@ export const pageFragment = `
     title,
     content[] {
         ${richTextFragment}
-    }
+    },
+    slug {
+        current
+    },
+    homepage
 `;
 
 export interface Page {
     title: string;
     content: RichText;
+    slug: {
+        current: string;
+    };
+    homepage: boolean;
 }
