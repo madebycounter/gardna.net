@@ -25,7 +25,7 @@ export const gallerySchema = defineType({
             name: "images",
             title: "Images",
             type: "array",
-            of: [{ type: "image.default" }],
+            of: [{ type: "image" }],
         },
     ],
     // components: {

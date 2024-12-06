@@ -1,5 +1,6 @@
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
+import { media } from "sanity-plugin-media";
 import { muxInput } from "sanity-plugin-mux-input";
 import { structureTool } from "sanity/structure";
 
@@ -7,7 +8,6 @@ import {
     configSchema,
     pageSchema,
     richTextSchema,
-    sanityImageSchema,
     socialLinkSchema,
     gallerySchema,
     externalLinkSchema,
@@ -25,7 +25,6 @@ export default defineConfig({
             pageLinkSchema,
             externalLinkSchema,
             richTextSchema,
-            sanityImageSchema,
             socialLinkSchema,
             configSchema,
             pageSchema,
@@ -38,5 +37,6 @@ export default defineConfig({
             defaultApiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
         }),
         muxInput(),
+        media(),
     ],
 });

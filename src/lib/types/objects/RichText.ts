@@ -24,7 +24,7 @@ export const richTextSchema = defineType({
             },
         },
         {
-            type: "image.default",
+            type: "image",
         },
         {
             type: "gallery",
@@ -37,7 +37,7 @@ export const richTextFragment = `
     _type == "block" => {
         ...
     },
-    _type == "image.default" => {
+    _type == "image" => {
         ${sanityImageFragment}
     },
     _type == "gallery" => {

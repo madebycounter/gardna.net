@@ -15,7 +15,7 @@ export default function Content({ data }: ContentProps) {
     // const [lightboxOpen, lightboxCurrent, setLightbox] = useLightboxState();
 
     // const slides = [
-    //     ...data.filter((block: any) => block._type === "image.default"),
+    //     ...data.filter((block: any) => block._type === "image"),
     //     ...data
     //         .filter((block: any) => block._type === "gallery")
     //         .flatMap((block: any) => block.images),
@@ -56,7 +56,7 @@ export default function Content({ data }: ContentProps) {
                                 />
                             </>
                         ),
-                        "image.default": (props: any) => (
+                        image: (props: any) => (
                             <Image
                                 src={props.value}
                                 className="my-4"

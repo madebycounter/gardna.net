@@ -36,7 +36,7 @@ export default function Image(props: ImageProps) {
                     <div className="flex h-full w-full flex-col p-4 md:p-16">
                         <SanityImageComponent
                             id={src.id}
-                            alt={src.caption}
+                            alt={src.altText || src.title}
                             crop={src.crop}
                             hotspot={src.hotspot}
                             projectId={
@@ -47,7 +47,15 @@ export default function Image(props: ImageProps) {
                             className="h-full w-full flex-1 object-contain"
                         />
                         <p className="text-center text-gray-300">
-                            {src.caption}
+                            {src.title && (
+                                <>
+                                    <strong className="text-gray-300">
+                                        {src.title}
+                                    </strong>
+                                    <br />
+                                </>
+                            )}
+                            {src.description || src.altText}
                         </p>
                     </div>
                 </Viewer>
@@ -55,7 +63,7 @@ export default function Image(props: ImageProps) {
 
             <SanityImageComponent
                 id={src.id}
-                alt={src.caption}
+                alt={src.altText || src.title}
                 crop={src.crop}
                 hotspot={src.hotspot}
                 projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
