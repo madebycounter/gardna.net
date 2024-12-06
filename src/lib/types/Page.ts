@@ -2,6 +2,10 @@ import { ComposeIcon, CogIcon } from "@sanity/icons";
 import { defineType } from "sanity";
 
 import { RichText, richTextFragment } from "@/lib/types/objects/RichText";
+import {
+    SanityImage,
+    sanityImageFragment,
+} from "@/lib/types/objects/SanityImage";
 
 export const pageSchema = defineType({
     name: "page",
@@ -34,6 +38,18 @@ export const pageSchema = defineType({
             group: "content",
         },
         {
+            name: "description",
+            title: "Description",
+            type: "text",
+            group: "settings",
+        },
+        {
+            name: "image",
+            title: "Image",
+            type: "image",
+            group: "settings",
+        },
+        {
             name: "slug",
             title: "Slug",
             type: "slug",
@@ -59,6 +75,10 @@ export const pageFragment = `
     content[] {
         ${richTextFragment}
     },
+    description,
+    image {
+        ${sanityImageFragment}
+    },
     slug {
         current
     },
@@ -68,6 +88,8 @@ export const pageFragment = `
 export interface Page {
     title: string;
     content: RichText;
+    description: string;
+    image: SanityImage;
     slug: {
         current: string;
     };
