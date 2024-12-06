@@ -28,9 +28,14 @@
 }
 
 .ViewerClose > svg {
-    fill: #f9f9f9;
+    fill: #dedede;
     width: 2rem;
     height: 2rem;
+    transition: transform 100ms ease-in-out;
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.75))
         drop-shadow(0 0 10px rgba(0, 0, 0, 0.75));
+}
+
+.ViewerClose:hover > svg {
+    fill: white;
 }
