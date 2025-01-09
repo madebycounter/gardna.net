@@ -4,7 +4,6 @@ import Link from "next/link";
 import Content from "@/site/Content";
 
 import Action from "@/lib/components/Action";
-import { useConfig } from "@/lib/queries";
 import { Config, Page } from "@/lib/types";
 
 import CounterLogo from "@/counter.png";
@@ -55,8 +54,9 @@ export default function SitePage({ pageData, config }: SitePageProps) {
                     </div>
 
                     <div className="my-4 hidden text-right sm:block">
-                        <p className="my-0">william@madebycounter.com</p>
-                        <p className="my-0">San Jose, CA</p>
+                        {config.navSubtitle.map((item, idx) => (
+                            <p className="my-0" key={idx}>{item}</p>
+                        ))}
                     </div>
                 </div>
 

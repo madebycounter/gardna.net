@@ -44,6 +44,13 @@ export const configSchema = defineType({
             of: [{ type: "pageLink" }, { type: "externalLink" }],
             group: "nav",
         },
+        {
+            name: "navSubtitle",
+            title: "Nav Subtitle",
+            type: "array",
+            of: [{ type: "string" }],
+            group: "nav"
+        }
     ],
 });
 
@@ -51,6 +58,7 @@ export const configFragment = `
     _id,
     _type,
     siteTitle,
+    navSubtitle[],
     navLinks[] {
         _type == "pageLink" => {
             ${pageLinkFragment}
@@ -66,4 +74,5 @@ export interface Config {
     _type: string;
     siteTitle: string;
     navLinks: (PageLink | ExternalLink)[];
+    navSubtitle: string[];
 }
