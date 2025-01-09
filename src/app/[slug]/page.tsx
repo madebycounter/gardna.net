@@ -15,6 +15,10 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     const pageData = await usePage((await params).slug);
     const config = await useConfig();
 
+    if (!pageData || !config) {
+        return notFound();
+    }
+
     const title = config.siteTitle + " | " + pageData.title;
     const description = pageData.description;
     const image = pageData.image;
