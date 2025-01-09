@@ -26,8 +26,9 @@ export default function SitePage({ pageData, config }: SitePageProps) {
                         </span>
 
                         <div className="my-2 block sm:hidden">
-                            <p className="my-0">william@madebycounter.com</p>
-                            <p className="my-0">San Jose, CA</p>
+                            {(config.navSubtitle || []).map((item, idx) => (
+                                <p className="my-0" key={idx}>{item}</p>
+                            ))}
                         </div>
 
                         <div className="my-4 flex gap-4">
@@ -54,7 +55,7 @@ export default function SitePage({ pageData, config }: SitePageProps) {
                     </div>
 
                     <div className="my-4 hidden text-right sm:block">
-                        {config.navSubtitle.map((item, idx) => (
+                        {(config.navSubtitle || []).map((item, idx) => (
                             <p className="my-0" key={idx}>{item}</p>
                         ))}
                     </div>
