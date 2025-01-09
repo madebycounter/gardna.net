@@ -19,7 +19,7 @@ export async function useHomePage(): Promise<Page> {
             ${pageFragment}
         }`,
         {},
-        ["page"],
+        ["page", "config"],
     );
 }
 
@@ -30,6 +30,6 @@ export async function usePage(slug: string): Promise<Page> {
             ${pageFragment}
         }`,
         { slug },
-        ["page"],
+        ["page", "config"],
     );
 }
