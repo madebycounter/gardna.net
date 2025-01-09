@@ -23,7 +23,7 @@ export const embedSchema = defineType({
             name: "url",
             title: "URL",
             description:
-                "Supported services: DailyMotion, CodeSandbox, Facebook Video, Figma, Gfycat, Gist, Google Maps, imgur, Instagram, JSFiddle, MixCloud, Replit, SoundCloud, Twitch Channel, Twitch Video, Twitter Tweet, Vimeo, YouTube, Dropbox.",
+                "Supported services: YouTube",
             hidden: ({ parent }) => parent?.embedType !== "url",
         },
         {
