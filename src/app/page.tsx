@@ -9,6 +9,10 @@ export async function generateMetadata(): Promise<Metadata> {
     const pageData = await useHomePage();
     const config = await useConfig();
 
+    if (!pageData || !config) {
+        return notFound();
+    }
+
     const title = config.siteTitle + " | " + pageData.title;
     const description = pageData.description;
     const image = pageData.image;
@@ -36,7 +40,7 @@ export default async function HomePage() {
     const pageData = await useHomePage();
     const config = await useConfig();
 
-    if (!pageData) {
+    if (!pageData || !config) {
         return notFound();
     }
 
